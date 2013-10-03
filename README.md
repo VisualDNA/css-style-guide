@@ -5,15 +5,32 @@
 ## <a name='TOC'>Table of Contents</a>
 
 1. [Tools](#tools)
-2. [Frameworks](#frameworks)
+1. [Frameworks](#frameworks)
+1. [Files](#files)
+1. [CSS rule declaration order](#cssorder)
 
 ## <a name='tools'>Tools</a>
-- **SASS** We're using this preprocessor, moving away from our previous one, LESS
+- In any case, we compile css during deployment. Don't use tools like LESSjs to build the css client-side.
 
+- **[SASS](http://sass-lang.com/)** We're using this preprocessor, moving away from our previous one, LESS. The file format is `.scss`, not `.sass`.
+
+- **[Autoprefixer](https://github.com/ai/autoprefixer)** is used to add vendor prefixes to standard css. So use only standard CSS rules.
+    ``` css
+    // Bad
+    -webkit-box-shadow: 1px 1px 4px #333;
+    -moz-box-shadow: 1px 1px 4px #333;
+    -ms-box-shadow: 1px 1px 4px #333;
+    box-shadow: 1px 1px 4px #333;
+
+    //Good
+    box-shadow: 1px 1px 4px #333;
+    ```
+
+    **[[⬆]](#TOC)**
 
 ## <a name='frameworks'>Frameworks</a>
 
-- **Bootstrap** We're still using some parts of this framework on our products. For the SASS version, please see [Bootstrap-sass](https://github.com/thomas-mcdonald/bootstrap-sass)
+- **[Bootstrap](http://www.getbootstrap.com/)** We're still using some parts of this framework on our products. For the SASS version, please see [Bootstrap-sass](https://github.com/thomas-mcdonald/bootstrap-sass)
 
 - Don't load multiple css stylesheets, try to keep it to a minimum to prevent extra http calls.
     ``` html
@@ -23,8 +40,9 @@
 
     <!-- Good -->
     <link href="/css/app.css" rel="stylesheet">
+    ```
 
-- Please import all the needed parts to your own file:
+- Please import all the needed parts to your .scss file
 
     ``` css
     // Bad (imports the whole set of css)
@@ -36,3 +54,11 @@
     @import "sass-bootstrap/normalize";
     @import "sass-bootstrap/print";
     ```
+    **[[⬆]](#TOC)**
+
+## <a name='files'>Files</a>
+
+- Create a main.scss file, put everything else inside a folder
+- Create one .scss file per page / section.
+
+## <a name="cssorder">CSS rule declaration order</a>
