@@ -67,6 +67,7 @@
 
 
 ## <a name="cssorder">CSS rule declaration order</a>
+- Inspired from this article from [CSS Tricks](http://css-tricks.com/sass-style-guide/)
 
 - List @extend(s) first
     ``` SCSS
@@ -121,6 +122,7 @@
 
 ## <a name='cssorder2'>Properties declaration order</a>
 
+- Inspired from [Idiomatic CSS](https://github.com/necolas/idiomatic-css)
 - Please define first positioning, then display model and everything else after
 
     ``` SCSS
