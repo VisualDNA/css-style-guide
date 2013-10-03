@@ -15,7 +15,7 @@
 - **[SASS](http://sass-lang.com/)** We're using this preprocessor, moving away from our previous one, LESS. The file format is `.scss`, not `.sass`.
 
 - **[Autoprefixer](https://github.com/ai/autoprefixer)** is used to add vendor prefixes to standard css. So use only standard CSS rules.
-    ``` css
+    ``` SCSS
     // Bad
     -webkit-box-shadow: 1px 1px 4px #333;
     -moz-box-shadow: 1px 1px 4px #333;
@@ -44,7 +44,7 @@
 
 - Please import all the needed parts to your .scss file
 
-    ``` css
+    ``` SCSS
     // Bad (imports the whole set of css)
     @import 'bootstrap-sass/bootstrap';
 
@@ -64,7 +64,7 @@
 ## <a name="cssorder">CSS rule declaration order</a>
 
 - List @extend(s) first
-    ``` css
+    ``` SCSS
     .weather {
         @extends %module;
         ...
@@ -72,7 +72,7 @@
     ```
 
 - List @include(s) next
-    ``` css
+    ``` SCSS
     .weather {
         @extends %module;
         @include clearfix();
@@ -80,7 +80,7 @@
     }
     ```
 - List regular styles next
-    ``` css
+    ``` SCSS
     .weather {
         @extends %module;
         @include clearfix();
@@ -90,7 +90,7 @@
     ```
 
 - Add nested selectors last
-``` css
+``` SCSS
     .weather {
         @extends %module;
         @include clearfix();
@@ -102,7 +102,7 @@
     ```
 
 - Don't nest more than three rules!
-    ``` css
+    ``` SCSS
     .module {
         .header {
             .icon {
