@@ -46,13 +46,13 @@
 
     ``` css
     // Bad (imports the whole set of css)
-    @import 'bootstra-sass/bootstrap';
+    @import 'bootstrap-sass/bootstrap';
 
     // Good
-    @import "sass-bootstrap/variables";
-    @import "sass-bootstrap/mixins";
-    @import "sass-bootstrap/normalize";
-    @import "sass-bootstrap/print";
+    @import "bootstrap-sass/variables";
+    @import "bootstrap-sass/mixins";
+    @import "bootstrap-sass/normalize";
+    @import "bootstrap-sass/print";
     ```
     **[[⬆]](#TOC)**
 
@@ -62,3 +62,52 @@
 - Create one .scss file per page / section.
 
 ## <a name="cssorder">CSS rule declaration order</a>
+
+- List @extend(s) first
+    ``` css
+    .weather {
+        @extends %module;
+        ...
+    }
+    ```
+
+- List @include(s) next
+    ``` css
+    .weather {
+        @extends %module;
+        @include clearfix();
+        ...
+    }
+    ```
+- List regular styles next
+    ``` css
+    .weather {
+        @extends %module;
+        @include clearfix();
+        background: red;
+        ...
+    }
+    ```
+
+- Add nested selectors last
+``` css
+    .weather {
+        @extends %module;
+        @include clearfix();
+        background: red;
+        a {
+            color: yellow;
+        }
+    }
+    ```
+
+- Don't nest more than three rules!
+    ``` css
+    .module {
+        .header {
+            .icon {
+                // Don't nest anything more!
+            }
+        }
+    }
+    ```
