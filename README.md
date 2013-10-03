@@ -8,6 +8,7 @@
 1. [Frameworks](#frameworks)
 1. [Files](#files)
 1. [CSS rule declaration order](#cssorder)
+1. [Properties declaration order](#cssorder2)
 
 ## <a name='tools'>Tools</a>
 - In any case, we compile css during deployment. Don't use tools like LESSjs to build the css client-side.
@@ -61,6 +62,9 @@
 - Create a main.scss file, put everything else inside a folder
 - Create one .scss file per page / section.
 
+    **[[⬆]](#TOC)**
+
+
 ## <a name="cssorder">CSS rule declaration order</a>
 
 - List @extend(s) first
@@ -109,5 +113,40 @@
                 // Don't nest anything more!
             }
         }
+    }
+    ```
+
+    **[[⬆]](#TOC)**
+
+## <a name='cssorder2'>Properties declaration order</a>
+
+- Please define first positioning, then display model and everything else after
+
+    ``` SCSS
+    .selector {
+        /* Positioning */
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        /* Display & Box Model */
+        display: inline-block;
+        overflow: hidden;
+        box-sizing: border-box;
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        border: 10px solid #333;
+        margin: 10px;
+
+        /* Other */
+        background: #000;
+        color: #fff;
+        font-family: sans-serif;
+        font-size: 16px;
+        text-align: right;
     }
     ```
