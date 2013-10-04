@@ -197,12 +197,77 @@ We are largely using **LESS**, because of its simplicity. Nonetheless, we are ev
         text-align: right;
     }
     ```
+- CR: actually in WHY we are using a slightly different order: first the positioning, then the dimensions of the element and at last (they are related!). always declare the properties in the clockwise order (top-right-bottom-left)
+
+    ``` SCSS
+    .selector {
+        /* Positioning */
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100px;
+        min-width: 0px;
+        max-width: 100%;
+        height: 100px;
+        min-height: 0px;
+        max-height: none;
+        z-index: 10;
+        margin: 0px auto;
+        padding: 5px 10px 15px 10px;
+
+        /* Display & Box Model */
+        display: inline-block;
+        float: none;
+        overflow: hidden;
+        box-sizing: border-box;
+
+        /* List or Table styling */
+        list-style: …
+        table-layout: … 
+        border-spacing: … 
+        etc.
+
+        /* Font styling */
+        font-family: sans-serif;
+        font-size: 16px;
+        line-height: 1.2em;        
+        font-weight: bold;
+        font-style: italic;
+        text-align: right;
+        vertical-align: middle;
+        text-transform: uppercase;
+        text-decoration: none;
+        white-space: nowrap;
+
+        /* Box styling */
+        background: #FFFFFF url(../img/logo.png) no-repeat 0px 50%;
+        background-size: 50% 50%;
+        border: 10px solid #333333;
+        border-radius: 3px;
+        box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+
+        /* CSS3 and other properties */
+        content: " ";
+        opacity: 0.5;
+        transition: …
+        transform: …
+        animation: …
+
+    }
+    ```
 
     **[[⬆]](#TOC)**
 
 ## <a name='conventions'>Conventions</a>
 
-- We write all the class names in lowercase with hyphens
+- **IDs vs. Classes**: as a general rule of thumb, we are using classes as identifiers, whenever possible. Use IDs only if required, only for top-level (and obviously unique) elements, and only if you know what you're doing.
+- **!important**: it can be applied in very limited and specific situations. Use it only if you are at Level 3 of CSS knowledge.
+- **Whitespace**: use 4 spaces per indentation level, so configure you editor accordingly. Use one level of indentation for each declaration.
+- **Comments**: use `//` for generic comments (they are stripped on processing); never use `/* */` unless you need a comment to appear in the outputted CSS (legal declarations, licenses, etc.)
+- **Sections**: you are invited to use comments (and ascii decorations) to break code into discrete and logical sections.
+- **Namings**: adopt meaningful, readable and not-too-generic class names. Write them in lowercase with hyphens
 
     ``` SCSS
     // Bad
@@ -232,7 +297,10 @@ We are largely using **LESS**, because of its simplicity. Nonetheless, we are ev
     }
     ```
 
-- Prepend a space before the opening brace.
+- **Formats**: 
+  - Place the closing brace of a ruleset in the same column as the first character of the ruleset.
+  - Separate each ruleset by a blank line.
+  - Include a single space before the opening brace of a ruleset.
     ``` SCSS
     // Bad
     span{…}
@@ -246,8 +314,16 @@ We are largely using **LESS**, because of its simplicity. Nonetheless, we are ev
     	…
     }
     ```
+  - Include a single space after the colon of a declaration.
+    ``` SCSS
+    // Bad
+    span { font-size:12px; }
+    
+    // Good
+    span { font-size: 12px; }
+    ```
 
-- Don't spare on bites: use full hexadecimal color, declare specifically measures, ect. In this way you increase readability and expecially reduce the cognitive load
+- Don't spare on bites: use full hexadecimal color, declare specifically measures, use leading “0”s in values, ect. In this way you increase readability and expecially reduce the cognitive load
     ``` SCSS
     // Not bad, but require an extra cognitive effort to be interpreted
     .text { color: #000; }
@@ -268,9 +344,10 @@ We are largely using **LESS**, because of its simplicity. Nonetheless, we are ev
     .alert { color: red; }
     .primary { background-color: @color-brand-base; }
     ```
+- **Hacks**: don't ever use hacks, unless you are on Level 4 of CSS mastering. If you need to declare specific properties for specific browsers (IE, in 99.99% of the cases) use conditional comments to load browser-specific CSS files.
 
     **[[⬆]](#TOC)**
-
+    
 ## <a name='license'>License</a>
 
 The MIT License (MIT)
