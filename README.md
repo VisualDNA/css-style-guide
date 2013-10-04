@@ -9,6 +9,7 @@
 1. [Files](#files)
 1. [CSS rule declaration order](#cssorder)
 1. [Properties declaration order](#cssorder2)
+1. [Class definitions](#classnames)
 1. [License](#license)
 
 ## <a name='tools'>Tools</a>
@@ -60,8 +61,21 @@
 
 ## <a name='files'>Files</a>
 
-- Create a main.scss file, put everything else inside a folder
-- Create one .scss file per page / section.
+- Feel free to split the content in multiple files.
+- Start with an underscore each file that shouldn't be converted to css.
+    ```
+    // Bad
+    scss
+        main.scss
+        reset.scss
+        mediaqueries.scss
+
+    // Good
+    scss
+        main.scss
+        _reset.scss
+        _mediaqueries.scss
+    ```
 
     **[[⬆]](#TOC)**
 
@@ -156,6 +170,66 @@
 
     **[[⬆]](#TOC)**
 
+## <a name='classnames'>Class definitions</a>
+
+- We write all the class names in lowercase with hyphens
+
+    ``` SCSS
+    // Bad
+    .LukeSkywalker {
+
+    }
+
+    // Good
+    .luke-skywalker {
+    }
+    ```
+
+- To define multiple states of the same element, we're adopting the underscore _(up to discussion)__
+
+    ``` SCSS
+    // Bad
+    .luke-skywalker-wounded {
+    }
+    .menu-open {
+    }
+
+    // Good
+    .luke-skywlaker_wounded {
+    }
+    .menu_open {
+
+    }
+    ```
+
+- Multiple classes, write one class per line
+
+    ``` SCSS
+    // Bad
+    .luke-skywalker, .han-solo, .princess-leia {
+
+    }
+
+    // Good
+    .luke-skywalker,
+    .han-solo,
+    .princess-leia {
+
+    }
+    ```
+
+- Single line rules, use them only when one property is defined
+
+    ``` SCSS
+    // Bad
+    .luke-skywalker { box-sizing: border-box; padding: 10px; }
+
+    // Good
+    div { box-sizing: border-box; }
+    .luke-skywalker { padding: 10x; }
+
+    ```
+    **[[⬆]](#TOC)**
 ## <a name='license'>License</a>
 
 The MIT License (MIT)
