@@ -9,15 +9,19 @@
 1. [Files](#files)
 1. [CSS rule declaration order](#cssorder)
 1. [Properties declaration order](#cssorder2)
-1. [Class definitions](#classnames)
+1. [Conventions](#conventions)
 1. [License](#license)
 
+
 ## <a name='tools'>Tools</a>
-- In any case, we compile css during deployment. Don't use tools like LESSjs to build the css client-side.
+In all our projects, we use **CSS pre-processors** and we generate the final CSS via Grunt (minification is done only on deployment). 
 
-- **[SASS](http://sass-lang.com/)** We're using this preprocessor, moving away from our previous one, LESS. The file format is `.scss`, not `.sass`.
+We are largely using **LESS**, because of its simplicity. Nonetheless, we are evaluating if moving away and adopting **Sass** as our standard CSS preprocessing language (more powerful, becoming a standard de-facto, easy to find documentation or sample code). For this reason, all the examples below will be in SCSS, when not differently reported.
 
-- **[Autoprefixer](https://github.com/ai/autoprefixer)** is used to add vendor prefixes to standard css. So use only standard CSS rules.
+- **[LESS](http://lesscss.org/)**: currently the preprocessor used in large part of our projects.
+- **[Sass](http://sass-lang.com/)** used in some secondary/experimental/explorative projects. The syntax (and file format) we use is `.scss`, not `.sass`.
+
+- **[Autoprefixer](https://github.com/ai/autoprefixer)** is used in some projects to automatically add vendor prefixes to standard CSS. Notice: it can't generalize all the different implementations for advanced/experimental CSS3 properties (transforms, animations, flexbox, etc.); for this reason we are still relying on mixins for this scope.
     ``` SCSS
     // Bad
     -webkit-box-shadow: 1px 1px 4px #333;
@@ -35,8 +39,8 @@
 
 - **[Bootstrap](http://www.getbootstrap.com/)** We're still using some parts of this framework on our products. For the SASS version, please see [Bootstrap-sass](https://github.com/thomas-mcdonald/bootstrap-sass)
 
-- Don't load multiple css stylesheets, try to keep it to a minimum to prevent extra http calls.
-    ``` html
+- Don't load multiple CSS stylesheets in your HTML, try to keep it to a minimum to prevent extra http calls.
+    ``` HTML
     <!-- Bad -->
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
@@ -45,7 +49,7 @@
     <link href="/css/app.css" rel="stylesheet">
     ```
 
-- Please import all the needed parts to your .scss file
+- Import only the needed parts of the framework to your .scss file. It is acceptable to comment-out the files not used to avoid importing theme.
 
     ``` SCSS
     // Bad (imports the whole set of css)
@@ -56,22 +60,27 @@
     @import "bootstrap-sass/mixins";
     @import "bootstrap-sass/normalize";
     @import "bootstrap-sass/print";
+    // @import "bootstrap-sass/print";
     ```
     **[[⬆]](#TOC)**
 
 ## <a name='files'>Files</a>
 
-- Feel free to split the content in multiple files.
-- Start with an underscore each file that shouldn't be converted to css.
+- Feel free to split the content in multiple files (in that case, use meaningful names for the files). 
+- When the include files become too many, organize then in one or more subfolders (use meaningful and coherent names).
+- Adopt an intelligent convention for the way files and folders are organized. _[TO BE DEFINED/DISCUSSED]_
+- Don't forget to use a single output file, including all the other needed files in it.
+
+- To comply with Sass convention, start with an underscore each file that shouldn't be converted to CSS.
     ```
     // Bad
-    scss
+    SCSS
         main.scss
         reset.scss
         mediaqueries.scss
 
     // Good
-    scss
+    SCSS
         main.scss
         _reset.scss
         _mediaqueries.scss
@@ -132,6 +141,27 @@
     }
     ```
 
+- Write each selector and propertiy on its own line. It's acceptable to use one single line to improve readability or when there is only one selector and one property.
+    ``` SCSS
+    // Bad
+    .error, .alert, .success { ... }
+    .message { font-size: 12px; color: #000000; background: #666666; }
+    .left { float: left; }
+
+    // Good
+    .error,
+    .alert,
+    .success {
+   		…
+  	}
+    .message {
+   		font-size: 12px;
+  		color: #000000;
+  		background: #666666;
+ 	}
+    .left { float: left; }
+    ```
+
     **[[⬆]](#TOC)**
 
 ## <a name='cssorder2'>Properties declaration order</a>
@@ -170,7 +200,7 @@
 
     **[[⬆]](#TOC)**
 
-## <a name='classnames'>Class definitions</a>
+## <a name='conventions'>Conventions</a>
 
 - We write all the class names in lowercase with hyphens
 
@@ -202,34 +232,45 @@
     }
     ```
 
-- Multiple classes, write one class per line
-
+- Prepend a space before the opening brace.
     ``` SCSS
     // Bad
-    .luke-skywalker, .han-solo, .princess-leia {
-
+    span{…}
+    .primary{
+    	…
     }
-
+    
     // Good
-    .luke-skywalker,
-    .han-solo,
-    .princess-leia {
-
+    span {…}
+    .primary {
+    	…
     }
     ```
 
-- Single line rules, use them only when one property is defined
+- Don't spare on bites: use full hexadecimal color, declare specifically measures, ect. In this way you increase readability and expecially reduce the cognitive load
+    ``` SCSS
+    // Not bad, but require an extra cognitive effort to be interpreted
+    .text { color: #000; }
+    .intro { padding: 0; }
+    
+    // Better
+    .text { color: #000000; }
+    .intro { padding: 0px; }
+    ```
 
+- Don't use colour names. Whenever defined, use colour variables.
     ``` SCSS
     // Bad
-    .luke-skywalker { box-sizing: border-box; padding: 10px; }
-
+    .alert { color: red; }
+    .primary { background-color: #0B85DC; }
+    
     // Good
-    div { box-sizing: border-box; }
-    .luke-skywalker { padding: 10x; }
-
+    .alert { color: red; }
+    .primary { background-color: @color-brand-base; }
     ```
+
     **[[⬆]](#TOC)**
+
 ## <a name='license'>License</a>
 
 The MIT License (MIT)
