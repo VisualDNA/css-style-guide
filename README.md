@@ -301,24 +301,27 @@ We are largely using **LESS**, because of its simplicity. Nonetheless, we are ev
   - Place the closing brace of a ruleset in the same column as the first character of the ruleset.
   - Separate each ruleset by a blank line.
   - Include a single space before the opening brace of a ruleset.
+
     ``` SCSS
     // Bad
     span{…}
     .primary{
     	…
     }
-    
+
     // Good
     span {…}
     .primary {
     	…
     }
     ```
+
   - Include a single space after the colon of a declaration.
+
     ``` SCSS
     // Bad
     span { font-size:12px; }
-    
+
     // Good
     span { font-size: 12px; }
     ```
