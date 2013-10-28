@@ -14,8 +14,6 @@
 
 
 ## <a name='tools'>Tools</a>
-
-## <a name='tools'>Tools</a>
 In all our projects, we use **CSS pre-processors** and we generate the final CSS via Grunt (minification is done only on deployment), never on client side (LESSjs).
 
 - **[SASS](http://sass-lang.com/)** We're using this preprocessor, moving away from our previous one, LESS. The file format is `.scss`, not `.sass`.
