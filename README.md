@@ -36,11 +36,6 @@ In all our projects, we use **CSS pre-processors** and we generate the final CSS
 
 
 
-We are largely using **LESS**, because of its simplicity. Nonetheless, we are evaluating if moving away and adopting **Sass** as our standard CSS preprocessing language (more powerful, becoming a standard de-facto, easy to find documentation or sample code). For this reason, all the examples below will be in SCSS, when not differently reported.
-
-- **[LESS](http://lesscss.org/)**: currently the preprocessor used in large part of our projects.
-- **[Sass](http://sass-lang.com/)** used in some secondary/experimental/explorative projects. The syntax (and file format) we use is `.scss`, not `.sass`.
-
 
 ## <a name='frameworks'>Frameworks</a>
 
