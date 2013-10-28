@@ -14,14 +14,13 @@
 
 
 ## <a name='tools'>Tools</a>
-In all our projects, we use **CSS pre-processors** and we generate the final CSS via Grunt (minification is done only on deployment). 
 
-We are largely using **LESS**, because of its simplicity. Nonetheless, we are evaluating if moving away and adopting **Sass** as our standard CSS preprocessing language (more powerful, becoming a standard de-facto, easy to find documentation or sample code). For this reason, all the examples below will be in SCSS, when not differently reported.
+## <a name='tools'>Tools</a>
+In all our projects, we use **CSS pre-processors** and we generate the final CSS via Grunt (minification is done only on deployment), never on client side (LESSjs).
 
-- **[LESS](http://lesscss.org/)**: currently the preprocessor used in large part of our projects.
-- **[Sass](http://sass-lang.com/)** used in some secondary/experimental/explorative projects. The syntax (and file format) we use is `.scss`, not `.sass`.
+- **[SASS](http://sass-lang.com/)** We're using this preprocessor, moving away from our previous one, LESS. The file format is `.scss`, not `.sass`.
 
-- **[Autoprefixer](https://github.com/ai/autoprefixer)** is used in some projects to automatically add vendor prefixes to standard CSS. Notice: it can't generalize all the different implementations for advanced/experimental CSS3 properties (transforms, animations, flexbox, etc.); for this reason we are still relying on mixins for this scope.
+- **[Autoprefixer](https://github.com/ai/autoprefixer)** is used to add vendor prefixes to standard css. So use only standard CSS rules.
     ``` SCSS
     // Bad
     -webkit-box-shadow: 1px 1px 4px #333;
@@ -34,6 +33,16 @@ We are largely using **LESS**, because of its simplicity. Nonetheless, we are ev
     ```
 
     **[[⬆]](#TOC)**
+
+- **[LESS](http://lesscss.org/)**: Some legacy projects still run on LESS. 
+
+
+
+We are largely using **LESS**, because of its simplicity. Nonetheless, we are evaluating if moving away and adopting **Sass** as our standard CSS preprocessing language (more powerful, becoming a standard de-facto, easy to find documentation or sample code). For this reason, all the examples below will be in SCSS, when not differently reported.
+
+- **[LESS](http://lesscss.org/)**: currently the preprocessor used in large part of our projects.
+- **[Sass](http://sass-lang.com/)** used in some secondary/experimental/explorative projects. The syntax (and file format) we use is `.scss`, not `.sass`.
+
 
 ## <a name='frameworks'>Frameworks</a>
 
