@@ -210,13 +210,13 @@ In all our projects, we use **CSS pre-processors** and we generate the final CSS
         bottom: 0;
         left: 0;
         width: 100px;
-        min-width: 0px;
+        min-width: 0;
         max-width: 100%;
         height: 100px;
-        min-height: 0px;
+        min-height: 0;
         max-height: none;
         z-index: 10;
-        margin: 0px auto;
+        margin: 0 auto;
         padding: 5px 10px 15px 10px;
 
         /* Display & Box Model */
@@ -244,7 +244,7 @@ In all our projects, we use **CSS pre-processors** and we generate the final CSS
         white-space: nowrap;
 
         /* Box styling */
-        background: #FFF url(../img/logo.png) no-repeat 0px 50%;
+        background: #FFF url(../img/logo.png) no-repeat 0 50%;
         background-size: 50% 50%;
         border: 10px solid #333;
         border-radius: 3px;
@@ -340,7 +340,7 @@ In all our projects, we use **CSS pre-processors** and we generate the final CSS
 - When a value has no magnitude, do not include the unit. Also border: 0; is preferred over border: none;
     ``` SCSS
     // This requires extra cognitive effort to be interpreted
-    .text { padding: 0px; }
+    .text { padding: 0; }
     
     // Better, both saves bytes but more importantly is abundantly clear that the developer meant no magnitude
     .text { padding: 0; }
