@@ -147,20 +147,20 @@ In all our projects, we use **CSS pre-processors** and we generate the final CSS
     ``` SCSS
     // Bad
     .error, .alert, .success { ... }
-    .message { font-size: 12px; color: #000000; background: #666666; }
+    .message { font-size: 12px; color: #000; background: #666; }
     .left { float: left; }
 
     // Good
     .error,
     .alert,
     .success {
-   		…
-  	}
+        …
+    }
     .message {
-   		font-size: 12px;
-  		color: #000000;
-  		background: #666666;
- 	}
+        font-size: 12px;
+        color: #000;
+        background: #666;
+    }
     .left { float: left; }
     ```
 
@@ -244,9 +244,9 @@ In all our projects, we use **CSS pre-processors** and we generate the final CSS
         white-space: nowrap;
 
         /* Box styling */
-        background: #FFFFFF url(../img/logo.png) no-repeat 0px 50%;
+        background: #FFF url(../img/logo.png) no-repeat 0px 50%;
         background-size: 50% 50%;
-        border: 10px solid #333333;
+        border: 10px solid #333;
         border-radius: 3px;
         box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 
@@ -308,13 +308,13 @@ In all our projects, we use **CSS pre-processors** and we generate the final CSS
     // Bad
     span{…}
     .primary{
-    	…
+        …
     }
 
     // Good
     span {…}
     .primary {
-    	…
+        …
     }
     ```
 
@@ -328,15 +328,22 @@ In all our projects, we use **CSS pre-processors** and we generate the final CSS
     span { font-size: 12px; }
     ```
 
-- Don't spare on bites: use full hexadecimal color, declare specifically measures, use leading “0”s in values, ect. In this way you increase readability and expecially reduce the cognitive load
+- Use shorthand hexadecimal colours. In this way you increase readability and reduce the cognitive load
     ``` SCSS
     // Not bad, but require an extra cognitive effort to be interpreted
     .text { color: #000; }
-    .intro { padding: 0; }
     
     // Better
-    .text { color: #000000; }
-    .intro { padding: 0px; }
+    .text { color: #000; }
+    ```
+
+- When a value has no magnitude, do not include the unit. Also border: 0; is preferred over border: none;
+    ``` SCSS
+    // This requires extra cognitive effort to be interpreted
+    .text { padding: 0px; }
+    
+    // Better, both saves bytes but more importantly is abundantly clear that the developer meant no magnitude
+    .text { padding: 0; }
     ```
 
 - Don't use colour names. Whenever defined, use colour variables.
@@ -349,7 +356,7 @@ In all our projects, we use **CSS pre-processors** and we generate the final CSS
     .alert { color: red; }
     .primary { background-color: @color-brand-base; }
     ```
-- **Hacks**: don't ever use hacks, unless you are on Level 4 of CSS mastering. If you need to declare specific properties for specific browsers (IE, in 99.99% of the cases) use conditional comments to load browser-specific CSS files.
+- If you need to declare specific properties for specific browsers (IE, in 99.99% of the cases) use conditional comments to apply classes to the html tag for specific ies. This allows you to add classes at point of selector to keep the styles grouped for their vendors.
 
     **[[⬆]](#TOC)**
     
