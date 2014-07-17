@@ -121,7 +121,7 @@ In all our projects, we use **CSS pre-processors** and we generate the final CSS
     ```
 
 - Add nested selectors last
-``` SCSS
+    ``` SCSS
     .weather {
         @extends %module;
         @include clearfix();
